@@ -7,12 +7,16 @@
 </head>
 <body>
     <div id="app">
-        <button @click="count++">
-          Count is: {{ count }}
-        </button>
+        <ul>
+            <li v-for="(activity, i) in toDoList" :key="i">{{ !toDoList[i].done ? toDoList[i].text : "Attività eseguita"  }}</li>
+        </ul>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
+
+<!-- MILESTONE 1
+Stampare all'interno di una lista HTML un item per ogni ToDo, visualizzandone il testo.
+Se la proprietà "done" è uguale a true, visualizzare il testo del ToDo sbarrato. -->
