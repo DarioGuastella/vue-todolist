@@ -9,8 +9,10 @@
 <body>
     <div id="app">
         <ul>
-            <li v-for="(activity, i) in toDoList" :key="i" :class="!toDoList[i].done ? '' : 'done'" v-show="!toDoList[i].done">{{toDoList[i].text}}<button @click="deleteItem(i)">X</button></li> 
+            <li v-for="(activity, i) in toDoList" :key="i" :class="!toDoList[i].done ? '' : 'done'" @click="toDoList[i].done=!toDoList[i].done">{{toDoList[i].text}}<button @click="deleteItem(i)">X</button></li> 
         </ul>
+        <input type="text" v-model="newItem" @keyup.enter="addItem">
+        <button @click="addItem">Aggiungi</button>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

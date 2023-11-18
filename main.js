@@ -1,32 +1,31 @@
-const { createApp } = Vue
-//   Ogni attività sarà rappresentata da un oggetto con due proprietà:
-//   - text: una stringa che indica il testo del ToDo
-//   - done: un booleano (true/false) che indica se il ToDo è stato fatto oppure no
-createApp({
-    data() {
+const { createApp } = Vue;
+
+const opzioni = {
+    data: function () {
         return {
-            toDoList: [
-                {
-                    text: "Lavare i piatti",
-                    done: false
-                },
-                {
-                    text: "Fare la spesa",
-                    done: false
-                },
-                {
-                    text: "Cambiare l'acqua al pesce",
-                    done: false
-                },
-                {
-                    text: "Risolvere il conflitto mondiale",
-                    done: false
-                },
-                {
-                    text: "Lavare la macchina",
-                    done: false
-                }
-            ]
+        newItem: "",
+        toDoList: [
+            {
+                text: "Lavare i piatti",
+                done: false
+            },
+            {
+                text: "Fare la spesa",
+                done: false
+            },
+            {
+                text: "Cambiare l'acqua al pesce",
+                done: false
+            },
+            {
+                text: "Risolvere il conflitto mondiale",
+                done: false
+            },
+            {
+                text: "Lavare la macchina",
+                done: false
+            }
+        ]
         }
     },
     methods: {
@@ -34,11 +33,30 @@ createApp({
             //Se clicco sul pulsante, rimuovo oggetto dalla lista
             this.toDoList.splice(n, 1);
             console.log(this.toDoList.done) //Come mai non funge, Luca?
-           
-        }
-    }
 
-}).mount('#app')
+        },
+        addItem() {
+            let newItem = {
+                text: this.newItem,
+                done: false
+            };
+            this.toDoList.push(newItem);
+            this.newItem = ""
+        }
+
+    }
+};
+
+createApp(opzioni).mount('#app')
+
+
+
+
+
+//   Ogni attività sarà rappresentata da un oggetto con due proprietà:
+//   - text: una stringa che indica il testo del ToDo
+//   - done: un booleano (true/false) che indica se il ToDo è stato fatto oppure no
+
 
 // DESCRIZIONE:
 // Creare una web application che mostri una lista di cose da fare.
